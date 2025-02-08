@@ -16,7 +16,6 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      position: relative;
       font-family: Arial, sans-serif;
     }
     /* Estilo para os corações animados */
@@ -46,46 +45,49 @@
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       text-align: center;
       padding: 10px;
-      max-width: 80%;
+      width: 80%;
       z-index: 2;
       opacity: 0; /* Inicialmente oculto */
       transition: opacity 2s ease-out;
     }
     #message {
-      top: 40%;
+      top: 20%;
       font-size: 4rem; /* Ajustado para 4rem */
     }
     #message2 {
-      top: 50%;
+      top: 35%;
       font-size: 3rem; /* Ajustado para 3rem */
     }
     /* Container do vídeo (inicialmente oculto e com animação de deslizamento) */
     #videoContainer {
       display: none;
       position: absolute;
-      bottom: 80px;
+      bottom: 10%;
       z-index: 2;
       opacity: 0;
       transform: translateY(50px);
       transition: opacity 5s ease-out, transform 5s ease-out;
+      width: 80%; /* Garantindo que o vídeo não ultrapasse a tela */
+      text-align: center;
     }
     /* Botão para ativar a surpresa */
     #trigger {
       position: absolute;
-      bottom: 35%; /* Subindo o botão */
+      bottom: 20%;
       display: flex;
       justify-content: center; /* Centraliza horizontalmente */
       align-items: center; /* Centraliza verticalmente */
-      padding: 20px 40px; /* Ajustado para um tamanho confortável */
-      font-size: 1.6rem; /* Ajustado para um tamanho mais confortável */
+      padding: 15px 30px; /* Ajustado para um tamanho confortável */
+      font-size: 1.4rem; /* Ajustado para um tamanho mais confortável */
       background: #ff6f91;
       color: #fff;
       border: none;
       border-radius: 10px;
       cursor: pointer;
       z-index: 3; /* Garantir que o botão fique sobre os outros elementos */
-      width: 250px; /* Aumentando a área clicável */
-      height: 70px; /* Aumentando a altura */
+      width: 80%; /* Tornando o botão maior para facilitar o clique em dispositivos móveis */
+      max-width: 250px; /* Limita o tamanho máximo do botão */
+      height: 60px; /* Ajuste a altura do botão */
       text-align: center; /* Garantindo que o texto fique centralizado */
       user-select: none; /* Impede seleção de texto no botão */
     }
@@ -105,7 +107,7 @@
 
   <!-- Container do vídeo (inicialmente oculto) -->
   <div id="videoContainer">
-    <video id="videoElement" width="320" height="180" controls>
+    <video id="videoElement" width="100%" controls>
       <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/video_bb.mp4" type="video/mp4">
       Seu navegador não suporta a tag de vídeo.
     </video>
