@@ -52,11 +52,11 @@
     }
     #message {
       top: 20%;
-      font-size: 4rem; /* Ajustado para 4rem */
+      font-size: 1.8rem; /* Fontes reduzidas para celular */
     }
     #message2 {
       top: 35%;
-      font-size: 3rem; /* Ajustado para 3rem */
+      font-size: 1.5rem; /* Fontes mais reduzidas para celular */
     }
     /* Container do vídeo (inicialmente oculto e com animação de deslizamento) */
     #videoContainer {
@@ -77,8 +77,8 @@
       display: flex;
       justify-content: center; /* Centraliza horizontalmente */
       align-items: center; /* Centraliza verticalmente */
-      padding: 15px 30px; /* Ajustado para um tamanho confortável */
-      font-size: 1.4rem; /* Ajustado para um tamanho mais confortável */
+      padding: 12px 25px; /* Ajustado para um tamanho confortável */
+      font-size: 1.2rem; /* Fontes reduzidas */
       background: #ff6f91;
       color: #fff;
       border: none;
@@ -87,7 +87,7 @@
       z-index: 3; /* Garantir que o botão fique sobre os outros elementos */
       width: 80%; /* Tornando o botão maior para facilitar o clique em dispositivos móveis */
       max-width: 250px; /* Limita o tamanho máximo do botão */
-      height: 60px; /* Ajuste a altura do botão */
+      height: 50px; /* Ajuste a altura do botão */
       text-align: center; /* Garantindo que o texto fique centralizado */
       user-select: none; /* Impede seleção de texto no botão */
     }
@@ -98,23 +98,19 @@
 </head>
 <body>
 
-  <!-- Botão para ativar a surpresa -->
   <button id="trigger">Ativar Surpresa</button>
 
-  <!-- Mensagens de Aniversário (inicialmente ocultas) -->
   <div id="message">Feliz Aniversário, amor!</div>
   <div id="message2">Espero que goste, fiz esse videozinho com a música que não sai da sua cabeça e saiba que você não sai da minha.</div>
 
-  <!-- Container do vídeo (inicialmente oculto) -->
   <div id="videoContainer">
     <video id="videoElement" width="100%" controls>
-      <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/video_bb.mp4" type="video/mp4">
+      <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/meu_video.mp4" type="video/mp4">
       Seu navegador não suporta a tag de vídeo.
     </video>
   </div>
 
   <script>
-    // Função que cria um coração animado na tela
     function createHeart() {
       const heart = document.createElement('div');
       heart.classList.add('heart');
@@ -128,27 +124,22 @@
       });
     }
     
-    // Função que começa a chuva de corações e exibe o vídeo após um tempo
     function startHeartRain() {
-      document.getElementById('trigger').style.display = 'none'; // Oculta o botão
+      document.getElementById('trigger').style.display = 'none';
       document.getElementById('trigger').disabled = true;
       
-      // Exibe as mensagens com animação
       setTimeout(() => {
         document.getElementById('message').style.opacity = '1';
         document.getElementById('message2').style.opacity = '1';
-      }, 500); // Exibe as mensagens após 0.5 segundos
+      }, 500); 
       
-      // Cria corações a cada 100 milissegundos
       setInterval(createHeart, 100);
 
-      // Anima os textos para desaparecerem
       setTimeout(() => {
         document.getElementById('message').style.opacity = '0';
         document.getElementById('message2').style.opacity = '0';
-      }, 4000); // Começa a desaparecer após 4 segundos
+      }, 4000);
 
-      // Exibe o vídeo após 5 segundos
       setTimeout(() => {
         document.getElementById('videoContainer').style.display = 'block';
         setTimeout(() => {
@@ -158,7 +149,6 @@
       }, 5000);
     }
 
-    // Adiciona o evento de clique no botão
     document.getElementById('trigger').addEventListener('click', startHeartRain);
   </script>
 
