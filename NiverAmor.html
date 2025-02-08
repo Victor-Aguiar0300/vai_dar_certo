@@ -44,12 +44,25 @@
       position: absolute;
       top: 40%;
       color: #fff;
-      font-size: 2.5rem;
+      font-size: 2rem;
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       display: none;
       z-index: 2;
-      opacity: 1;
+      opacity: 0;
       transition: opacity 3s ease-out;
+      text-align: center;
+    }
+    #message2 {
+      position: absolute;
+      top: 50%;
+      color: #fff;
+      font-size: 1.5rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 2;
+      opacity: 0;
+      transition: opacity 3s ease-out;
+      text-align: center;
     }
     /* Container do vídeo (inicialmente oculto e com animação de deslizamento) */
     #videoContainer {
@@ -81,11 +94,9 @@
 </head>
 <body>
 
-  <!-- Mensagem de Aniversário (inicialmente oculta) -->
-  <div id="message">
-    <p>Feliz Aniversário, amor.</p>
-    <p>Espero que goste, fiz esse videozinho com a musica que não sai da sua cabeça e saiba que você não sai da minha.</p>
-  </div>
+  <!-- Mensagens de Aniversário (inicialmente oculta e com animação de fade out) -->
+  <div id="message">Feliz Aniversário, amor!</div>
+  <div id="message2">Espero que goste, fiz esse videozinho com a música que não sai da sua cabeça e saiba que você não sai da minha.</div>
 
   <!-- Botão para ativar a surpresa -->
   <button id="trigger">Ativar Surpresa</button>
@@ -125,13 +136,21 @@
       // Cria corações a cada 100 milissegundos (agora eles caem sem parar)
       setInterval(createHeart, 100);
       
-      // Exibe a mensagem suavemente após 1 segundo
+      // Exibe a primeira mensagem de forma suave após 1 segundo
       setTimeout(() => {
         document.getElementById('message').style.display = 'block';
         setTimeout(() => {
           document.getElementById('message').style.opacity = '0'; // Desaparece suavemente
         }, 3000); // Mensagem começa a desaparecer após 3 segundos
       }, 1000);
+      
+      // Exibe a segunda mensagem após 4 segundos e desaparece suavemente após 3 segundos
+      setTimeout(() => {
+        document.getElementById('message2').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('message2').style.opacity = '0'; // Desaparece suavemente
+        }, 3000); // Segunda mensagem começa a desaparecer após 3 segundos
+      }, 4000);
       
       // Exibe o vídeo com animação suave após 5 segundos
       setTimeout(() => {
