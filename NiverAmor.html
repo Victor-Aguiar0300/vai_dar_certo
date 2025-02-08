@@ -44,7 +44,7 @@
       position: absolute;
       top: 40%;
       color: #fff;
-      font-size: 4rem; /* Aumentado para 4rem */
+      font-size: 6rem; /* Aumentado para 6rem */
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       display: none;
       z-index: 2;
@@ -56,9 +56,9 @@
     }
     #message2 {
       position: absolute;
-      top: 50%;
+      top: 60%;
       color: #fff;
-      font-size: 3rem; /* Aumentado para 3rem */
+      font-size: 4rem; /* Aumentado para 4rem */
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       display: none;
       z-index: 2;
@@ -81,9 +81,9 @@
     /* Botão para ativar a surpresa */
     #trigger {
       position: absolute;
-      bottom: 10%;
-      padding: 15px 30px;
-      font-size: 1.5rem;
+      bottom: 20%;
+      padding: 20px 40px;
+      font-size: 2rem;
       background: #ff6f91;
       color: #fff;
       border: none;
@@ -108,7 +108,7 @@
   <!-- Container do vídeo (inicialmente oculto) -->
   <div id="videoContainer">
     <video id="videoElement" width="320" height="180" controls>
-      <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/video_bb.mp4" type="video/mp4">
+      <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/meu_video.mp4" type="video/mp4">
       Seu navegador não suporta a tag de vídeo.
     </video>
   </div>
@@ -135,6 +135,7 @@
     // Função que começa a chuva de corações, e exibe a mensagem e o vídeo após um tempo
     function startHeartRain() {
       // Desabilita o botão para evitar múltiplos cliques
+      document.getElementById('trigger').style.display = 'none'; // Oculta o botão
       document.getElementById('trigger').disabled = true;
 
       // Cria corações a cada 100 milissegundos (agora eles caem sem parar)
