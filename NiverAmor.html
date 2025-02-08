@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Feliz Aniversário!</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .mensagem {
+            font-size: 2em;
+            position: absolute;
+            text-align: center;
+            opacity: 1;
+            transition: opacity 1s ease-in-out;
+        }
+        .coração {
+            width: 120px;
+            height: 120px;
+            background: red;
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            clip-path: path('M 50 15 C 20 -20 -50 40 50 120 C 150 40 80 -20 50 15 Z');
+            opacity: 0;
+        }
+        @keyframes explodir {
+            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
+            50% { transform: translate(-50%, -50%) scale(1.5); }
+            100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
+        }
+        .video-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            display: none;
+        }
+        video {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+    </style>
+</head>
+<body>
+    <div class="mensagem">Feliz aniversário, meu bombonzinho!</div>
+    <div class="coração"></div>
+    <div class="video-container">
+        <video id="meuVideo" autoplay muted loop>
+            <source src="https://drive.google.com/uc?export=download&id=1QZGSFjtEPMIsmEV9nZZpA_s5wwlXNynb" type="video/mp4">
+        </video>
+    </div>
+    <script>
+        setTimeout(() => {
+            document.querySelector('.mensagem').style.opacity = '0';
+            setTimeout(() => {
+                document.querySelector('.mensagem').style.display = 'none';
+                document.querySelector('.coração').style.opacity = '1';
+                document.querySelector('.coração').style.animation = 'explodir 1.5s ease-in-out forwards';
+                setTimeout(() => {
+                    document.querySelector('.coração').style.display = 'none';
+                    document.querySelector('.video-container').style.display = 'block';
+                }, 1500);
+            }, 1000);
+        }, 2000);
+    </script>
+</body>
+</html>
