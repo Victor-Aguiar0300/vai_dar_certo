@@ -39,7 +39,7 @@
         opacity: 0;
       }
     }
-    /* Mensagem especial (inicialmente oculta) */
+    /* Mensagem especial (inicialmente oculta e com animação de fade out) */
     #message {
       position: absolute;
       top: 40%;
@@ -48,15 +48,20 @@
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
       display: none;
       z-index: 2;
+      opacity: 1;
+      transition: opacity 3s ease-out;
     }
-    /* Container do vídeo (inicialmente oculto) */
+    /* Container do vídeo (inicialmente oculto e com animação de deslizamento) */
     #videoContainer {
       display: none;
       position: absolute;
       bottom: 80px;
       z-index: 2;
+      opacity: 0;
+      transform: translateY(50px);
+      transition: opacity 3s ease-out, transform 3s ease-out;
     }
-    /* Botão para acionar a surpresa */
+    /* Botão para ativar a surpresa */
     #trigger {
       position: absolute;
       bottom: 20px;
@@ -77,7 +82,10 @@
 <body>
 
   <!-- Mensagem de Aniversário (inicialmente oculta) -->
-  <div id="message">Feliz Aniversário, Amor!</div>
+  <div id="message">
+    <p>Feliz Aniversário, amor.</p>
+    <p>Espero que goste, fiz esse videozinho com a musica que não sai da sua cabeça e saiba que você não sai da minha.</p>
+  </div>
 
   <!-- Botão para ativar a surpresa -->
   <button id="trigger">Ativar Surpresa</button>
@@ -117,10 +125,21 @@
       // Cria corações a cada 100 milissegundos (agora eles caem sem parar)
       setInterval(createHeart, 100);
       
-      // Após 5 segundos, exibe a mensagem e o vídeo
+      // Exibe a mensagem suavemente após 1 segundo
       setTimeout(() => {
         document.getElementById('message').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('message').style.opacity = '0'; // Desaparece suavemente
+        }, 3000); // Mensagem começa a desaparecer após 3 segundos
+      }, 1000);
+      
+      // Exibe o vídeo com animação suave após 5 segundos
+      setTimeout(() => {
         document.getElementById('videoContainer').style.display = 'block';
+        setTimeout(() => {
+          document.getElementById('videoContainer').style.opacity = '1'; // Aparece suavemente
+          document.getElementById('videoContainer').style.transform = 'translateY(0)';
+        }, 100); // Deixa a transição do vídeo acontecer logo após a exibição
       }, 5000);
     }
     
