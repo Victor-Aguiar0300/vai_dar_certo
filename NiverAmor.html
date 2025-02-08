@@ -1,81 +1,131 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Feliz Aniversário!</title>
-    <style>
-        body {
-            margin: 0;
-            padding: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            background-color: black;
-            color: white;
-            font-family: Arial, sans-serif;
-            overflow: hidden;
-        }
-        .mensagem {
-            font-size: 2em;
-            position: absolute;
-            text-align: center;
-            opacity: 1;
-            transition: opacity 1s ease-in-out;
-        }
-        .coração {
-            width: 120px;
-            height: 120px;
-            background: red;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            clip-path: path('M 50 15 C 20 -20 -50 40 50 120 C 150 40 80 -20 50 15 Z');
-            opacity: 0;
-        }
-        @keyframes explodir {
-            0% { transform: translate(-50%, -50%) scale(1); opacity: 1; }
-            50% { transform: translate(-50%, -50%) scale(1.5); }
-            100% { transform: translate(-50%, -50%) scale(5); opacity: 0; }
-        }
-        .video-container {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            display: none;
-        }
-        video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Surpresa de Aniversário</title>
+  <style>
+    /* Configurações gerais da página */
+    body {
+      margin: 0;
+      padding: 0;
+      overflow: hidden;
+      background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      position: relative;
+      font-family: Arial, sans-serif;
+    }
+    /* Estilo para os corações animados */
+    .heart {
+      position: absolute;
+      font-size: 24px;
+      animation: fall linear forwards;
+      opacity: 0;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px) scale(0.5);
+        opacity: 0;
+      }
+      50% {
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh) scale(1);
+        opacity: 0;
+      }
+    }
+    /* Mensagem especial (inicialmente oculta) */
+    #message {
+      position: absolute;
+      top: 40%;
+      color: #fff;
+      font-size: 2.5rem;
+      text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
+      display: none;
+      z-index: 2;
+    }
+    /* Container do vídeo (inicialmente oculto) */
+    #videoContainer {
+      display: none;
+      position: absolute;
+      bottom: 80px;
+      z-index: 2;
+    }
+    /* Botão para acionar a surpresa */
+    #trigger {
+      position: absolute;
+      bottom: 20px;
+      padding: 10px 20px;
+      font-size: 1.2rem;
+      background: #ff6f91;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+      z-index: 2;
+    }
+    #trigger:hover {
+      background: #ff3e6d;
+    }
+  </style>
 </head>
 <body>
-    <div class="mensagem">Feliz aniversário, meu bombonzinho!</div>
-    <div class="coração"></div>
-    <div class="video-container">
-        <video width="320" height="180" controls>
-    <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/video_bb.mp4" type="video/mp4">
-          </video>
-    </div>
-    <script>
-        setTimeout(() => {
-            document.querySelector('.mensagem').style.opacity = '0';
-            setTimeout(() => {
-                document.querySelector('.mensagem').style.display = 'none';
-                document.querySelector('.coração').style.opacity = '1';
-                document.querySelector('.coração').style.animation = 'explodir 1.5s ease-in-out forwards';
-                setTimeout(() => {
-                    document.querySelector('.coração').style.display = 'none';
-                    document.querySelector('.video-container').style.display = 'block';
-                }, 1500);
-            }, 1000);
-        }, 2000);
-    </script>
+
+  <!-- Mensagem de Aniversário (inicialmente oculta) -->
+  <div id="message">Feliz Aniversário, Amor!</div>
+
+  <!-- Botão para ativar a surpresa -->
+  <button id="trigger">Ativar Surpresa</button>
+
+  <!-- Container do vídeo (inicialmente oculto) -->
+  <div id="videoContainer">
+    <video id="videoElement" width="320" height="180" controls>
+      <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/video_bb.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <script>
+    // Função que cria um coração animado na tela
+    function createHeart() {
+      const heart = document.createElement('div');
+      heart.classList.add('heart');
+      heart.innerHTML = '❤️';
+      // Posicionamento horizontal aleatório
+      heart.style.left = Math.random() * 100 + 'vw';
+      // Duração aleatória para a animação (entre 3 e 5 segundos)
+      heart.style.animationDuration = (3 + Math.random() * 2) + 's';
+      // Tamanho aleatório para os corações
+      heart.style.fontSize = (20 + Math.random() * 30) + 'px';
+      document.body.appendChild(heart);
+      // Remove o coração após o fim da animação
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+      });
+    }
+    
+    // Função que inicia a chuva de corações e, ao final, mostra a mensagem e o vídeo
+    function startHeartRain() {
+      // Desabilita o botão para evitar cliques repetidos
+      document.getElementById('trigger').disabled = true;
+      
+      // Cria corações a cada 200 milissegundos
+      const interval = setInterval(createHeart, 200);
+      // Após 5 segundos, interrompe a criação dos corações e exibe a mensagem e o vídeo
+      setTimeout(() => {
+        clearInterval(interval);
+        document.getElementById('message').style.display = 'block';
+        document.getElementById('videoContainer').style.display = 'block';
+      }, 5000);
+    }
+    
+    // Adiciona o evento de clique ao botão
+    document.getElementById('trigger').addEventListener('click', startHeartRain);
+  </script>
+
 </body>
 </html>
