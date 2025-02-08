@@ -46,10 +46,9 @@
       color: #fff;
       font-size: 6rem; /* Aumentado para 6rem */
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-      display: none;
-      z-index: 2;
       opacity: 0;
-      transition: opacity 3s ease-out;
+      z-index: 2;
+      transition: opacity 5s ease-out; /* Aumentado para 5s */
       text-align: center;
       padding: 10px;
       max-width: 80%;
@@ -60,10 +59,9 @@
       color: #fff;
       font-size: 4rem; /* Aumentado para 4rem */
       text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.5);
-      display: none;
-      z-index: 2;
       opacity: 0;
-      transition: opacity 3s ease-out;
+      z-index: 2;
+      transition: opacity 5s ease-out; /* Aumentado para 5s */
       text-align: center;
       padding: 10px;
       max-width: 80%;
@@ -76,7 +74,7 @@
       z-index: 2;
       opacity: 0;
       transform: translateY(50px);
-      transition: opacity 3s ease-out, transform 3s ease-out;
+      transition: opacity 5s ease-out, transform 5s ease-out; /* Aumentado para 5s */
     }
     /* Botão para ativar a surpresa */
     #trigger {
@@ -143,18 +141,18 @@
       
       // Exibe a primeira mensagem de forma suave após 1 segundo
       setTimeout(() => {
-        document.getElementById('message').style.display = 'block';
+        document.getElementById('message').style.opacity = '1'; // Torna a primeira mensagem visível
         setTimeout(() => {
           document.getElementById('message').style.opacity = '0'; // Desaparece suavemente
-        }, 3000); // Mensagem começa a desaparecer após 3 segundos
+        }, 7000); // A primeira mensagem vai desaparecer após 7 segundos
       }, 1000);
       
-      // Exibe a segunda mensagem após 4 segundos e desaparece suavemente após 3 segundos
+      // Exibe a segunda mensagem após 4 segundos e desaparece suavemente após 7 segundos
       setTimeout(() => {
-        document.getElementById('message2').style.display = 'block';
+        document.getElementById('message2').style.opacity = '1'; // Torna a segunda mensagem visível
         setTimeout(() => {
           document.getElementById('message2').style.opacity = '0'; // Desaparece suavemente
-        }, 3000); // Segunda mensagem começa a desaparecer após 3 segundos
+        }, 7000); // A segunda mensagem vai desaparecer após 7 segundos
       }, 4000);
       
       // Exibe o vídeo com animação suave após 5 segundos
