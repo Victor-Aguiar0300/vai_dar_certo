@@ -85,7 +85,8 @@
   <!-- Container do vídeo (inicialmente oculto) -->
   <div id="videoContainer">
     <video id="videoElement" width="320" height="180" controls>
-      <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/video_bb.mp4" type="video/mp4">
+      <source src="https://github.com/Victor-Aguiar0300/vai_dar_certo/raw/main/meu_video.mp4" type="video/mp4">
+      Seu navegador não suporta a tag de vídeo.
     </video>
   </div>
 
@@ -108,22 +109,22 @@
       });
     }
     
-    // Função que inicia a chuva de corações e, ao final, mostra a mensagem e o vídeo
+    // Função que começa a chuva de corações, e exibe a mensagem e o vídeo após um tempo
     function startHeartRain() {
-      // Desabilita o botão para evitar cliques repetidos
+      // Desabilita o botão para evitar múltiplos cliques
       document.getElementById('trigger').disabled = true;
+
+      // Cria corações a cada 100 milissegundos (agora eles caem sem parar)
+      setInterval(createHeart, 100);
       
-      // Cria corações a cada 200 milissegundos
-      const interval = setInterval(createHeart, 200);
-      // Após 5 segundos, interrompe a criação dos corações e exibe a mensagem e o vídeo
+      // Após 5 segundos, exibe a mensagem e o vídeo
       setTimeout(() => {
-        clearInterval(interval);
         document.getElementById('message').style.display = 'block';
         document.getElementById('videoContainer').style.display = 'block';
       }, 5000);
     }
     
-    // Adiciona o evento de clique ao botão
+    // Adiciona o evento de clique no botão
     document.getElementById('trigger').addEventListener('click', startHeartRain);
   </script>
 
